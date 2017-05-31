@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="com.demo.proxy.dal.mapper.ShareBookMapper">
+
+    <resultMap type="ShareBook" id="ShareBookMap">
+        <id property="cbooksid" column="CBOOKSID"/>
+        <result property="ccreator" column="CCREATOR"/>
+        <result property="cadmin" column="CADMIN"/>
+        <result property="cbooksname" column="CBOOKSNAME"/>
+        <result property="cbookscolor" column="CBOOKSCOLOR"/>
+        <result property="iparenttype" column="IPARENTTYPE"/>
+        <result property="cadddate" column="CADDDATE"/>
+        <result property="csecretkey" column="CSECRETKEY"/>
+        <result property="covertime" column="COVERTIME"/>
+        <result property="iversion" column="IVERSION"/>
+        <result property="cwritedate" column="CWRITEDATE"/>
+        <result property="operatortype" column="OPERATORTYPE"/>
+    </resultMap>
+
+    <sql id="selectAll">
+        select CBOOKSID,CCREATOR,CADMIN,CBOOKSNAME,CBOOKSCOLOR,IPARENTTYPE,CADDDATE,CSECRETKEY,TO_CHAR(COVERTIME,'yyyy-MM-dd HH24:mi:ss') as COVERTIME,IVERSION,CWRITEDATE,OPERATORTYPE
+    </sql>
+
+    <select id="queryShareBookById" parameterType="java.lang.String" resultMap="ShareBookMap">
+        <include refid="selectAll"/>
+        from bk_share_books where CBOOKSID = #{cbookId}
+    </select>
+
+    <insert id="addShareBook" parameterType="ShareBook">
+        insert into bk_share_books (CBOOKSID,CCREATOR,CADMIN,CBOOKSNAME,CBOOKSCOLOR,IPARENTTYPE,CADDDATE,CSECRETKEY,COVERTIME,IVERSION,CWRITEDATE,OPERATORTYPE)
+        values(#{cbooksid,jdbcType=VARCHAR},#{ccreator,jdbcType=VARCHAR},#{cadmin,jdbcType=VARCHAR},#{cbooksname,jdbcType=VARCHAR},#{cbookscolor,jdbcType=VARCHAR},
+          #{iparenttype,jdbcType=VARCHAR},#{cadddate,jdbcType=TIMESTAMP},#{csecretkey,jdbcType=VARCHAR},#{covertime,jdbcType=VARCHAR},#{iversion,jdbcType=BIGINT},
+          #{cwritedate,jdbcType=VARCHAR},#{operatortype,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!-- 更新账本暗号 -->
+    <update id="updateSecretKey" parameterType="com.alibaba.fastjson.JSONObject">
+        update bk_share_books set CSECRETKEY=#{secretKey, jdbcType=VARCHAR}, COVERTIME=to_date(#{overTime}, 'yyyy-MM-dd HH24:mi:ss')
+        where CBOOKSID=#{cbooksId}
+    </update>
+
+    <update id="updateBooksAdminById" parameterType="java.lang.String">
+             UPDATE BK_SHARE_BOOKS
+        SET CADMIN =
+            (SELECT CMEMBERID
+               FROM (SELECT CMEMBERID
+                       FROM BK_SHARE_BOOKS_MEMBER
+                      WHERE CBOOKSID = #{cbooksId}
+                        AND ISTATE = 0
+                      ORDER BY CJOINDATE)
+              WHERE ROWNUM = 1)
+      WHERE CBOOKSID = #{cbooksid}
+    </update>
+
+    <select id="queryShareBookBySecretKey" parameterType="java.lang.String" resultMap="ShareBookMap">
+        <include refid="selectAll"/>
+        from bk_share_books where CSECRETKEY=#{secretKey} and COVERTIME&gt;sysdate
+    </select>
+
+</mapper>

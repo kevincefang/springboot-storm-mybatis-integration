@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <!--<include resource="org/springframework/boot/logging/logback/base.xml" />-->
+
+    <appender name="LOGSTASH_SOCKET" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"project_name":"accountbook","type":"logback"}</customFields>
+        </encoder>
+    </appender>
+
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%method:%L - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="LOGSTASH_SOCKET"/>
+    </root>
+
+    <logger name="com.caiyi"  level="INFO">
+
+    </logger>
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="backtype.storm" level="INFO"/>
+    <logger name="org.apache.com.caiyi.accountbookproxy.storm.logging" level="INFO"/>
+    <logger name="org.apache.zookeeper" level="WARN"/>
+    <logger name="com.alibaba" level="WARN"/>
+    <logger name="com.alibaba.druid" level="WARN">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+</configuration>

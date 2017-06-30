@@ -29,7 +29,7 @@ public class RequestAspect {
     ThreadLocal<Long> startTime = new ThreadLocal<>();
 
     // 申明一个切点 里面是 execution表达式
-    @Pointcut("execution(public * com.caiyi.accountbookweb.controller..*.*(..))")
+    @Pointcut("execution(public * com.demo.web.controller..*.*(..))")
     private void requestAspect() {}
 
     // 请求method前打印内容

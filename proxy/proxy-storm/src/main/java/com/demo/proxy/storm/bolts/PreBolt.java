@@ -22,7 +22,6 @@ import java.util.Map;
 /**
  * 前置bolt所有业务都通过本入口进行分发
  *
- * @author DONGYA
  */
 public class PreBolt extends BaseBasicBolt {
 
@@ -66,9 +65,9 @@ public class PreBolt extends BaseBasicBolt {
         if (service.startsWith("SHARE_")) { //共享记账模块
             logger.info("start into  shareBolt applicationContext====="+applicationContext);
             collector.emit("shareBolt", new Values(param, returnInfo));
-        } else if(service.startsWith("ACCOUNT_")){ //记账其他业务模块
-            logger.info("start into  accountBolt applicationContext====="+applicationContext);
-            collector.emit("accountBolt", new Values(param, returnInfo));
+        } else if(service.startsWith("demo_")){ //记账其他业务模块
+            logger.info("start into  demoBolt applicationContext====="+applicationContext);
+            collector.emit("demoBolt", new Values(param, returnInfo));
         }
 
     }
@@ -76,7 +75,7 @@ public class PreBolt extends BaseBasicBolt {
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
         logger.info("PreBolt.declareOutputFields======");
         declarer.declareStream("shareBolt", new Fields("shareBolt", "return-info")); //共享记账
-        declarer.declareStream("accountBolt", new Fields("accountBolt", "return-info")); //第三方
+        declarer.declareStream("demoBolt", new Fields("demoBolt", "return-info")); //第三方
 
     }
 

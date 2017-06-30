@@ -13,9 +13,6 @@ import org.apache.storm.utils.Utils;
 
 import java.util.Map;
 
-/**
- * Created by huashao on 2016/12/7.
- */
 public class NimbusSubmit {
 
     public static void main(String[] args) {
@@ -23,9 +20,9 @@ public class NimbusSubmit {
         String topologyFile = args[0];
         String drcpService = "storm-chargebook-topology";
 
-        ChargeBookTopology accountBookTopology = new ChargeBookTopology();
-        TopologyBuilder builder = accountBookTopology.getTopologyBuilder();
-        accountBookTopology.submitStorm();
+        ChargeBookTopology demoTopology = new ChargeBookTopology();
+        TopologyBuilder builder = demoTopology.getTopologyBuilder();
+        demoTopology.submitStorm();
 
         /**
          * 集群中的storm.yaml配置文件必须在classpath下(src/main/resources)

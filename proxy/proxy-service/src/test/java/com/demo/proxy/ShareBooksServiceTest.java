@@ -1,6 +1,5 @@
-package com.caiyi.accountbookproxy.service;
+package com.demo.proxy;
 
-import com.demo.proxy.service.ShareBooksService;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,7 +22,7 @@ public class ShareBooksServiceTest {
     private Logger logger = Logger.getLogger(getClass());
 
     @Autowired
-    private ShareBooksService shareBooksService;
+    //private ShareBooksService shareBooksService;
 
     @Test
     public void testQueryShareBooks(){

@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * @author: kevin.
  * @date: 2017/5/15.
- * @description: 共享账本
+ * @description:
  */
 public class ShareBook {
 

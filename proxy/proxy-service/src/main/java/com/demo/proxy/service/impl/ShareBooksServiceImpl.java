@@ -1,11 +1,7 @@
 package com.demo.proxy.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.caiyi.accountbookproxy.util.Utils;
-import com.demo.proxy.constants.ProxyErrorCodeConstants;
 import com.demo.proxy.dal.mapper.ShareBookMapper;
-import com.demo.proxy.dal.model.ShareBook;
-import com.demo.proxy.exception.BusinessException;
 import com.demo.proxy.service.ShareBooksService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,31 +26,7 @@ public class ShareBooksServiceImpl implements ShareBooksService {
 
 
     @Override
-    public ShareBook queryShareBookById(String cbookId) {
-        return shareBookMapper.queryShareBookById(cbookId);
+    public int addShareBook(JSONObject jsonObject) {
+        return 0;
     }
-
-    @Override
-    public JSONObject addShareBook(JSONObject jsonObject) throws BusinessException{
-        try{
-            JSONObject result = new JSONObject();
-
-            String cuserId = jsonObject.getString("cuserId");
-            String cbookId = Utils.generateUUID();
-
-            //返回结果
-            result.put("code",1);
-            result.put("desc","添加账本成功");
-
-            return result;
-        }catch (Exception e){
-            logger.error("ShareBooksServiceImpl.addShareBook occur an Exception",e);
-            throw new BusinessException(ProxyErrorCodeConstants.CODE_FAIL);
-        }
-    }
-
-
-
-
-
 }

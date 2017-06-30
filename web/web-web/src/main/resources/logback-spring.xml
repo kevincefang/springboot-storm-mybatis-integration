@@ -4,7 +4,7 @@
 
     <appender name="LOGSTASH_SOCKET" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
-            <customFields>{"project_name":"accountbook","type":"logback"}</customFields>
+            <customFields>{"project_name":"demo","type":"logback"}</customFields>
         </encoder>
     </appender>
 
@@ -23,12 +23,12 @@
         <appender-ref ref="LOGSTASH_SOCKET"/>
     </root>
 
-    <logger name="com.caiyi"  level="INFO">
+    <logger name="com.demo"  level="INFO">
 
     </logger>
     <logger name="org.springframework" level="INFO"/>
     <logger name="backtype.storm" level="INFO"/>
-    <logger name="org.apache.com.caiyi.accountbookproxy.storm.logging" level="INFO"/>
+    <logger name="com.demo.proxy.storm" level="INFO"/>
     <logger name="org.apache.zookeeper" level="WARN"/>
     <logger name="com.alibaba" level="WARN"/>
     <logger name="com.alibaba.druid" level="WARN">

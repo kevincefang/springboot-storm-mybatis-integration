@@ -8,9 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 
 
-/**
- * Created by been on 2016/11/4.
- */
 public abstract class BaseActor extends UntypedActor {
     public static Logger logger = LoggerFactory.getLogger("BaseActor");
 

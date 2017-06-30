@@ -34,8 +34,8 @@
         </dependency>
 
         <dependency>
-            <groupId>com.caiyi.accountbookproxy</groupId>
-            <artifactId>accountbookproxy-util</artifactId>
+            <groupId>com.demo.proxy</groupId>
+            <artifactId>proxy-util</artifactId>
         </dependency>
 
         <dependency>

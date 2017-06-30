@@ -99,26 +99,26 @@
         <dependencies>
 
             <dependency>
-                <groupId>com.caiyi.accountbookproxy</groupId>
-                <artifactId>accountbookproxy-util</artifactId>
+                <groupId>com.demo.proxy</groupId>
+                <artifactId>proxy-util</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.caiyi.accountbookproxy</groupId>
-                <artifactId>accountbookproxy-biz</artifactId>
+                <groupId>com.demo.proxy</groupId>
+                <artifactId>proxy-biz</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.caiyi.accountbookproxy</groupId>
-                <artifactId>accountbookproxy-dal</artifactId>
+                <groupId>com.demo.proxy</groupId>
+                <artifactId>proxy-dal</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.caiyi.accountbookproxy</groupId>
-                <artifactId>accountbookproxy-service</artifactId>
+                <groupId>com.demo.proxy</groupId>
+                <artifactId>proxy-service</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -148,11 +148,6 @@
                 <version>2.4.11</version>
             </dependency>
 
-            <dependency>
-                <groupId>com.caiyi.financial.nirvana</groupId>
-                <artifactId>nirvana.heartbeat</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-            </dependency>
 
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -164,19 +159,6 @@
         </dependencies>
 
     </dependencyManagement>
-
-    <distributionManagement>
-        <repository>
-            <id>nexus-releases</id>
-            <name>Nexus Release Repository</name>
-            <url>http://192.168.1.54:8081/nexus/content/repositories/release</url>
-        </repository>
-        <snapshotRepository>
-            <id>nexus-snapshots</id>
-            <name>Nexus Snapshot Repository</name>
-            <url>http://218.244.148.200:1889/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
 
 
     <profiles>

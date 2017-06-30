@@ -1,10 +1,5 @@
 package com.demo.proxy.exception;
 
-import com.demo.proxy.constants.ResultMsg;
-
-/**
- * Created by DONGYA on 2017/5/24.
- */
 public class BaseException extends RuntimeException {
 
     public int code;

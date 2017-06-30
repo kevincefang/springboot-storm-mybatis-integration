@@ -13,9 +13,6 @@ import org.springframework.context.ApplicationContext;
 
 import java.util.Map;
 
-/**
- * Created by been on 2016/11/4.
- */
 public abstract class AkkaSupport extends BaseBasicBolt {
 
     private static final long serialVersionUID = 1L;

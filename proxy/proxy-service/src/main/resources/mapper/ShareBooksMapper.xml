@@ -27,19 +27,6 @@
         from bk_share_books where CBOOKSID = #{cbookId}
     </select>
 
-    <insert id="addShareBook" parameterType="ShareBook">
-        insert into bk_share_books (CBOOKSID,CCREATOR,CADMIN,CBOOKSNAME,CBOOKSCOLOR,IPARENTTYPE,CADDDATE,CSECRETKEY,COVERTIME,IVERSION,CWRITEDATE,OPERATORTYPE)
-        values(#{cbooksid,jdbcType=VARCHAR},#{ccreator,jdbcType=VARCHAR},#{cadmin,jdbcType=VARCHAR},#{cbooksname,jdbcType=VARCHAR},#{cbookscolor,jdbcType=VARCHAR},
-          #{iparenttype,jdbcType=VARCHAR},#{cadddate,jdbcType=TIMESTAMP},#{csecretkey,jdbcType=VARCHAR},#{covertime,jdbcType=VARCHAR},#{iversion,jdbcType=BIGINT},
-          #{cwritedate,jdbcType=VARCHAR},#{operatortype,jdbcType=VARCHAR}
-        )
-    </insert>
-
-    <!-- 更新账本暗号 -->
-    <update id="updateSecretKey" parameterType="com.alibaba.fastjson.JSONObject">
-        update bk_share_books set CSECRETKEY=#{secretKey, jdbcType=VARCHAR}, COVERTIME=to_date(#{overTime}, 'yyyy-MM-dd HH24:mi:ss')
-        where CBOOKSID=#{cbooksId}
-    </update>
 
     <update id="updateBooksAdminById" parameterType="java.lang.String">
              UPDATE BK_SHARE_BOOKS
@@ -54,9 +41,5 @@
       WHERE CBOOKSID = #{cbooksid}
     </update>
 
-    <select id="queryShareBookBySecretKey" parameterType="java.lang.String" resultMap="ShareBookMap">
-        <include refid="selectAll"/>
-        from bk_share_books where CSECRETKEY=#{secretKey} and COVERTIME&gt;sysdate
-    </select>
 
 </mapper>

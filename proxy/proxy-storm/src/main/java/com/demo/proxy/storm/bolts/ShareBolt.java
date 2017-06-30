@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * @author: kevin.
  * @date: 2017/5/19.
- * @description: 共享账本bolt
+ * @description:
  */
 public class ShareBolt extends AkkaSupport {
 

@@ -14,7 +14,7 @@
     <artifactId>web-web</artifactId>
     <packaging>war</packaging>
 
-    <name>accountbookweb-web</name>
+    <name>web-web</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -33,8 +33,8 @@
 
         <!-- 项目内部的依赖 -->
         <dependency>
-            <groupId>com.caiyi.accountbookweb</groupId>
-            <artifactId>accountbookweb-util</artifactId>
+            <groupId>com.demo.web</groupId>
+            <artifactId>web-util</artifactId>
         </dependency>
 
         <!-- 项目内部的依赖 -->
@@ -44,7 +44,7 @@
             <artifactId>commons-beanutils</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.caiyi</groupId>
+            <groupId>com.demo</groupId>
             <artifactId>util</artifactId>
         </dependency>
         <dependency>
@@ -72,10 +72,6 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.caiyi.java-memcached-release</groupId>
-            <artifactId>java-memcached-release</artifactId>
         </dependency>
         <dependency>
             <groupId>jaxen</groupId>
@@ -133,10 +129,6 @@
             <artifactId>commons-fileupload</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.caiyi.common</groupId>
-            <artifactId>util</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.apache.storm</groupId>
@@ -198,11 +190,6 @@
             <artifactId>commons-io</artifactId>
         </dependency>
 
-
-        <dependency>
-            <groupId>com.caiyi.financial.nirvana</groupId>
-            <artifactId>nirvana.heartbeat</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>com.vdurmont</groupId>

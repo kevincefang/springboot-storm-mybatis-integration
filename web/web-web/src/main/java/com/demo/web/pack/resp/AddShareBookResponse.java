@@ -1,11 +1,5 @@
 package com.demo.web.pack.resp;
 
-import com.demo.web.bean.ShareBookBean;
-import com.caiyi.accountbookweb.bean.ShareFriendsMarkBean;
-import com.caiyi.accountbookweb.bean.ShareMemberBean;
-import com.demo.web.pack.base.BaseResponse;
-
-import java.util.List;
 
 /**
  * @author: kevin.

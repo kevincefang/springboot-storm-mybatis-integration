@@ -6,7 +6,7 @@ package com.demo.proxy.storm;
 /*@Configuration
 @EnableAutoConfiguration
 @ServletComponentScan
-@ComponentScan(basePackages="com.caiyi.accountbookproxy")
+@ComponentScan(basePackages="com.demo.proxy")
 public class Application {
 
     public static void main(String[] args) throws Exception {

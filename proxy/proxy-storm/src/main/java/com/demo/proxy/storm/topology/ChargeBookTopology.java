@@ -1,10 +1,6 @@
 package com.demo.proxy.storm.topology;
 
 import com.alibaba.fastjson.JSONObject;
-import com.demo.proxy.storm.bolts.AccountBolt;
-import com.demo.proxy.storm.bolts.PreBolt;
-import com.demo.proxy.storm.bolts.ShareBolt;
-import com.caiyi.financial.nirvana.heartbeat.server.spout.DynamicDRPCSpout;
 import org.apache.storm.Config;
 import org.apache.storm.LocalCluster;
 import org.apache.storm.LocalDRPC;
@@ -26,7 +22,7 @@ public class ChargeBookTopology {
     public ChargeBookTopology() {
         logger = LoggerFactory.getLogger(ChargeBookTopology.class);
         builder = new TopologyBuilder();
-        drpc = new DynamicDRPCSpout("chargebookDRPC");
+       // drpc = new DynamicDRPCSpout("chargebookDRPC");
         conf = new Config();
     }
 
@@ -36,11 +32,11 @@ public class ChargeBookTopology {
 
     private void init() {
         builder.setSpout("chargebookSpout", drpc);
-        builder.setBolt("preBolt", new PreBolt(), 4).shuffleGrouping("chargebookSpout");
-        builder.setBolt("accountBolt", new AccountBolt(), 2).shuffleGrouping("preBolt", "accountBolt");
-        builder.setBolt("shareBolt",new ShareBolt(),2).shuffleGrouping("preBolt","shareBolt");
+       // builder.setBolt("preBolt", new PreBolt(), 4).shuffleGrouping("chargebookSpout");
+        //builder.setBolt("demoBolt", new demoBolt(), 2).shuffleGrouping("preBolt", "demoBolt");
+        //builder.setBolt("shareBolt",new ShareBolt(),2).shuffleGrouping("preBolt","shareBolt");
         builder.setBolt("return", new ReturnResults(), 2)
-           .shuffleGrouping("accountBolt").shuffleGrouping("shareBolt");
+           .shuffleGrouping("demoBolt").shuffleGrouping("shareBolt");
     }
 
     public void submitLocal() {
@@ -90,19 +86,19 @@ public class ChargeBookTopology {
         String JVM_OPTS = "-Xmx4096m";
         if (args == null || args.length == 0) {
             LocalDRPC drpc = new LocalDRPC();
-            DynamicDRPCSpout drpcSpout = new DynamicDRPCSpout("chargebookSpout", drpc);
-            builder.setSpout("chargebookSpout", drpcSpout);
-            builder.setBolt("preBolt", new PreBolt()).shuffleGrouping("chargebookSpout");
-            builder.setBolt("accountBolt", new AccountBolt()).shuffleGrouping("preBolt", "accountBolt");
-            builder.setBolt("return", new ReturnResults(), 4)
-                    .shuffleGrouping("userBolt").shuffleGrouping("accountBolt");
+            //DynamicDRPCSpout drpcSpout = new DynamicDRPCSpout("chargebookSpout", drpc);
+//            builder.setSpout("chargebookSpout", drpcSpout);
+//            builder.setBolt("preBolt", new PreBolt()).shuffleGrouping("chargebookSpout");
+//            builder.setBolt("demoBolt", new demoBolt()).shuffleGrouping("preBolt", "demoBolt");
+//            builder.setBolt("return", new ReturnResults(), 4)
+//                    .shuffleGrouping("userBolt").shuffleGrouping("demoBolt");
 
             LocalCluster cluster = new LocalCluster();
             cluster.submitTopology("manual-drpc-demo", conf, builder.createTopology());
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("userId", "2a738180-38b3-4edc-acb4-91185034ed0e");
 
-            jsonObject.put("service", "ACCOUNT__signIn");
+            jsonObject.put("service", "demo__signIn");
 //			jsonObject.put("auth_token", "JJDLSN22CINCJEW");
 //			jsonObject.put("type", "qq");
 //			jsonObject.put("cpwd", "sdsadsadsadsad");

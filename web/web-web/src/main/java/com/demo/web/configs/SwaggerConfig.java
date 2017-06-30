@@ -30,7 +30,7 @@ public class SwaggerConfig {
                 //.globalResponseMessage(RequestMethod.GET,customerResponseMessage())
                 .forCodeGeneration(true)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.caiyi.accountbookweb"))
+                .apis(RequestHandlerSelectors.basePackage("com.demo.web"))
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
                 .build();

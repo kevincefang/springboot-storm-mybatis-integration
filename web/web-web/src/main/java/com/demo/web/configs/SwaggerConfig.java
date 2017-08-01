@@ -24,7 +24,7 @@ public class SwaggerConfig {
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
-                .groupName("share")
+                .groupName("api")
                 .genericModelSubstitutes(DeferredResult.class)
                 .useDefaultResponseMessages(false)
                 //.globalResponseMessage(RequestMethod.GET,customerResponseMessage())
@@ -38,7 +38,7 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("有鱼记账接口文档")
+                .title("接口文档")
                 .description("")
                 .contact("")
                 .version("")
